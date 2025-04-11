@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Project.Scripts.Global
+namespace Project.Scripts.Global.Abstract
 {
 	public class Manager<T> : Singleton<Manager<T>>
 	{

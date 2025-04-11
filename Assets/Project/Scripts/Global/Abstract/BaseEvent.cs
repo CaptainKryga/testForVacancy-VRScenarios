@@ -1,7 +1,7 @@
 using System;
 using JetBrains.Annotations;
 
-namespace Project.Scripts.Global
+namespace Project.Scripts.Global.Abstract
 {
 	public class BaseEvent<T>
 	{

@@ -1,4 +1,3 @@
-using Project.Scripts.Controller;
 using Project.Scripts.Global.Managers;
 using Project.Scripts.Model;
 using Project.Scripts.View.Sync.Components;
