@@ -3,7 +3,7 @@ using TMPro;
 
 namespace Project.Scripts.Controller.SyncView.Controllers
 {
-	public class SyncViewTextController : SyncViewControllerAbstract<TMP_Text>
+	public class SyncTextController : SyncControllerAbstract<TMP_Text>
 	{
 		
 	}

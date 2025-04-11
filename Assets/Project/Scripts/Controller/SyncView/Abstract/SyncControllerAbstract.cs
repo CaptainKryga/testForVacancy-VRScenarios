@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
 using Project.Scripts.View.Sync.Abstract;
+using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace Project.Scripts.Controller.SyncView.Abstract
 {
     //controller abstract from sync objects in scene
-    public abstract class SyncViewControllerAbstract<T>
+    public abstract class SyncControllerAbstract<T>
     {
         #region Variables
 
@@ -72,7 +73,6 @@ namespace Project.Scripts.Controller.SyncView.Abstract
         {
             if (component == null)
                 throw new Exception("Func[UpdateComponentsByGameObject] component null");
-
             // Get all components from component.Id in dictionary
             MappingDictionary.TryGetValue(component.Id, out SyncComponentAbstract<T>[] components);
 
@@ -81,9 +81,11 @@ namespace Project.Scripts.Controller.SyncView.Abstract
 
             // Update components in group
             for (int x = 0; x < components.Length; x++)
-                components[x].UpdateByComponentT(component.Component);
+                if (components[x] != component)
+                    components[x].UpdateByComponentT(component.ComponentSync);
         }
 
         #endregion
     }
 }
+
