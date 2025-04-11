@@ -1395,7 +1395,7 @@ GameObject:
   - component: {fileID: 901872488}
   - component: {fileID: 901872489}
   m_Layer: 0
-  m_Name: Sync
+  m_Name: SyncManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1472,7 +1472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461c9452c3144cb08fcce0a810df186c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _buttonLoadScene: {fileID: 7142647763899542901}
+  _buttonLoadScene: {fileID: 7142647763899542903}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -2269,15 +2269,15 @@ MonoBehaviour:
   m_Teleporting:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7142647763899542901 stripped
+--- !u!114 &7142647763899542903 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 13920667924664310, guid: 58468365f29d5024088c5893afdfdb15, type: 3}
+  m_CorrespondingSourceObject: {fileID: 432791845111581206, guid: 58468365f29d5024088c5893afdfdb15, type: 3}
   m_PrefabInstance: {fileID: 9201499913029161491}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c688ad006111384b93388e9f79ca193, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a06068dcadc4ffdadfce0da0ba05171, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &9201499913029161491
