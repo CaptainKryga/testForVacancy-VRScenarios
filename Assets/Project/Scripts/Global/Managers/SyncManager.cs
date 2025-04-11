@@ -1,4 +1,5 @@
 using Project.Scripts.Controller.SyncView;
+using Project.Scripts.Model;
 
 namespace Project.Scripts.Global.Managers
 {

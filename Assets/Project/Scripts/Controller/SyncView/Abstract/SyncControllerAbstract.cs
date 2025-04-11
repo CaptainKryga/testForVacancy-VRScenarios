@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Project.Scripts.View.Sync.Abstract;
-using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace Project.Scripts.Controller.SyncView.Abstract
