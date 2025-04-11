@@ -27,12 +27,18 @@ namespace Project.Scripts.Controller.SyncView.Abstract
             // Finding all components type T
             Components = Object.FindObjectsOfType<SyncComponentAbstract<T>>();
             if (Components == null || Components.Length == 0)
-                throw new Exception($"Components type[ { typeof(T) } ] not found");
+            {
+                Debug.LogWarning($"Components type[ { typeof(T) } ] not found");
+                return;
+            }
 
             // Creating Mapping dictionary from all finder components T
             MappingDictionary = GetComponentMappings(Components);
             if (MappingDictionary == null || MappingDictionary.Count == 0)
-                throw new Exception("MappingDictionary failed");
+            {
+                Debug.LogWarning("MappingDictionary failed");
+                return;
+            }
         }
 
         // Mapping Dictionary
