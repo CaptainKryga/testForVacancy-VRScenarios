@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3201198542242882068}
   - component: {fileID: 2610637835689426753}
   - component: {fileID: 7663321629177637686}
-  - component: {fileID: 13920667924664310}
   - component: {fileID: 432791845111581206}
   m_Layer: 5
   m_Name: ButtonLoadScene
@@ -136,18 +135,6 @@ MonoBehaviour:
           m_StringArgument: TrainingRoom
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &13920667924664310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1654464195881599469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c688ad006111384b93388e9f79ca193, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &432791845111581206
 MonoBehaviour:
   m_ObjectHideFlags: 0
