@@ -380,7 +380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7a7c741d5bb2e44fb425a30218e4b74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scenarioView: {fileID: 951667757}
+  scenarioSelectedView: {fileID: 951667757}
 --- !u!1 &660086309
 GameObject:
   m_ObjectHideFlags: 0
