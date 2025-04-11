@@ -11,14 +11,9 @@ namespace Project.Scripts.View.Sync.Components
 	// component TMP_Text
 	public class SyncText : SyncComponentAbstract<TMP_Text>
 	{
-		public override void UpdateByComponentT(TMP_Text component)
+		public override void UpdateComponentByT(TMP_Text component)
 		{
 			ComponentSync.text = component.text;
-		}
-
-		protected override void UpdateByAction()
-		{
-			SyncManager.Instance.Push(SyncType.Text, this);
 		}
 	}
 }

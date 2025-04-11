@@ -1,9 +1,8 @@
-using System;
-using Project.Scripts.Controller.SyncView;
 using Project.Scripts.Controller.SyncView.Abstract;
 using Project.Scripts.Controller.SyncView.Controllers;
 using Project.Scripts.Global.Managers;
 using Project.Scripts.Model;
+using Project.Scripts.View.Sync.Abstract;
 using Project.Scripts.View.Sync.Components;
 using TMPro;
 using UnityEngine.UI;
@@ -42,7 +41,7 @@ namespace Project.Scripts.Controller
 		
 		private void FuncSyncButton(object obj)
 		{
-			if (obj is SyncButton btn)
+			if (obj is SyncComponentAbstract<Button> btn)
 				_syncButtonController.UpdateComponentsByT(btn);
 		}
 		

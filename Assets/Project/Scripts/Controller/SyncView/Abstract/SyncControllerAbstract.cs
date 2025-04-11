@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Project.Scripts.View.Sync.Abstract;
+using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace Project.Scripts.Controller.SyncView.Abstract
@@ -87,7 +88,7 @@ namespace Project.Scripts.Controller.SyncView.Abstract
             // Update components in group
             for (int x = 0; x < components.Length; x++)
                 if (components[x] != component)
-                    components[x].UpdateByComponentT(component.ComponentSync);
+                    components[x].UpdateComponentByT(component.ComponentSync);
         }
 
         #endregion
