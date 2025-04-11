@@ -11,6 +11,9 @@ namespace Project.Scripts.View.Component.Components
 		public override void Activate()
 		{
 			Component.interactable = true;
+			
+			// Launch Action Sync
+			base.Activate();
 		}
 	}
 }
