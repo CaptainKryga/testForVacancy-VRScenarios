@@ -1,3 +1,5 @@
+using Project.Scripts.Global.Managers;
+using Project.Scripts.Model;
 using Project.Scripts.View.Sync.Abstract;
 using TMPro;
 using UnityEngine;
@@ -11,6 +13,11 @@ namespace Project.Scripts.View.Sync.Components
 		public override void UpdateComponentByT(TMP_Text component)
 		{
 			ComponentSync.text = component.text;
+		}
+
+		public override void SyncAllComponentsByT()
+		{
+			SyncManager.Instance.Push(SyncType.Text, this);
 		}
 	}
 }

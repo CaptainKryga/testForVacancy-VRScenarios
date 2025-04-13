@@ -11,7 +11,10 @@ namespace Project.Scripts.View.Sync.Abstract
 			ComponentSync = GetComponent<T>();
 		}
 		
-		// Method sync component
+		// Method update local component
 		public abstract void UpdateComponentByT(T component);
+		
+		// Method update components to this
+		public abstract void SyncAllComponentsByT();
 	}
 }

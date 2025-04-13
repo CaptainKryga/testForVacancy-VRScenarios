@@ -1,5 +1,3 @@
-using Project.Scripts.Global.Managers;
-using Project.Scripts.Model;
 using Project.Scripts.View.Sync.Components;
 using UnityEngine;
 
@@ -14,7 +12,7 @@ namespace Project.Scripts.View.Menu
 		public void EnableButtonLoadScene()
 		{
 			_buttonLoadScene.ComponentSync.interactable = true;
-			SyncManager.Instance.Push(SyncType.Button, _buttonLoadScene);
+			_buttonLoadScene.SyncAllComponentsByT();
 		}
 	}
 }
