@@ -1,7 +1,6 @@
 using Project.Scripts.Controller.SyncView.Abstract;
 using Project.Scripts.Global.Managers;
 using Project.Scripts.Model;
-using Project.Scripts.View.Sync.Abstract;
 using Project.Scripts.View.Sync.Components;
 using TMPro;
 
