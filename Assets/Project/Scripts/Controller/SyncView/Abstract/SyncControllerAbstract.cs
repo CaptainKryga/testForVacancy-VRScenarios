@@ -7,7 +7,7 @@ using Object = UnityEngine.Object;
 namespace Project.Scripts.Controller.SyncView.Abstract
 {
     //controller abstract from sync objects in scene
-    public abstract class SyncControllerAbstract<T>
+    public abstract class SyncControllerAbstract<T> : MonoBehaviour
     {
         #region Variables
 
@@ -23,7 +23,7 @@ namespace Project.Scripts.Controller.SyncView.Abstract
 
         #region Initialization
         
-        public virtual void Init()
+        public virtual void Awake()
         {
             // Finding all components type T
             Components = Object.FindObjectsOfType<SyncComponentAbstract<T>>();
