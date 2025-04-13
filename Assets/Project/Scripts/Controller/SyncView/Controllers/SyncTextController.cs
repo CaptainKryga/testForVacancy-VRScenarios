@@ -1,7 +1,7 @@
 using Project.Scripts.Controller.SyncView.Abstract;
 using Project.Scripts.Global.Managers;
 using Project.Scripts.Model;
-using Project.Scripts.View.Sync.Components;
+using Project.Scripts.View.Sync.Abstract;
 using TMPro;
 
 namespace Project.Scripts.Controller.SyncView.Controllers
@@ -21,7 +21,7 @@ namespace Project.Scripts.Controller.SyncView.Controllers
 
 		private void FuncSyncText(object obj)
 		{
-			if (obj is SyncText text)
+			if (obj is SyncComponentAbstract<TMP_Text> text)
 				UpdateComponentsByT(text);
 		}
 	}
