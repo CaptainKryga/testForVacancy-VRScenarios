@@ -19,7 +19,10 @@ namespace Project.Scripts.Controller.TrainingRoom
 			// Check scenario == null?
 			if (ScenarioModel.ScenarioScriptable == null)
 				ScenarioModel.ScenarioScriptable = _debugScenario;
-			
+		}
+
+		private void Start()
+		{
 			// Scenario init, load data and setup
 			_scenarioController.Init();
 		}
