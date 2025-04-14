@@ -5,5 +5,6 @@ namespace Project.Scripts.Model
 	{
 		Text,
 		Button,
+		CanvasGroup,
 	}
 }
