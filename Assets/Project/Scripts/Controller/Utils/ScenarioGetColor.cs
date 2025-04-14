@@ -1,6 +1,6 @@
 using Project.Scripts.Model.ScenarioComponents;
 
-namespace Project.Scripts.Controller.Scenario.Utils
+namespace Project.Scripts.Controller.Utils
 {
 	// Getting color
 	public class ScenarioGetColor
@@ -10,11 +10,12 @@ namespace Project.Scripts.Controller.Scenario.Utils
 		{
 			switch (status)
 			{
-				// case ScenarioStatusEnum.NotStarted: return "white";
+				case ScenarioStatusEnum.NotStarted: return "black";
+				case ScenarioStatusEnum.Started: return "white";
 				case ScenarioStatusEnum.Success: return "green";
 				case ScenarioStatusEnum.Failure: return "red";
 				case ScenarioStatusEnum.Skipped: return "grey";
-				default: return "white";
+				default: return "black";
 			}
 		}
 	}
