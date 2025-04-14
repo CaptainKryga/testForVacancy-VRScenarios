@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ae2b9bc2fc996c49921249d47d963fc, type: 3}
   m_Name: StepActionTest
   m_EditorClassIdentifier: 
+  Description: "\u0414\u0435\u0439\u0441\u0442\u0432\u0438\u0435 \u0442\u0435\u0441\u0442
+    0"
