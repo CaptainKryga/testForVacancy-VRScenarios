@@ -1053,7 +1053,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7a7c741d5bb2e44fb425a30218e4b74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenarioSelectedView: {fileID: 951667757}
+  _scenarioSelectedView: {fileID: 951667757}
 --- !u!1 &608073957
 GameObject:
   m_ObjectHideFlags: 0
@@ -1741,7 +1741,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1f44499a0e24162b14aee0c388a63c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _syncController: {fileID: 0}
 --- !u!1 &1418503945
 GameObject:
   m_ObjectHideFlags: 0
