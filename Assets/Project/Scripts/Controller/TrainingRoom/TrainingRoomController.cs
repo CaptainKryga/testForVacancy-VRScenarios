@@ -1,6 +1,7 @@
 using Project.Scripts.Controller.Scenario;
 using Project.Scripts.Model;
 using Project.Scripts.Model.ScriptableObjects;
+using Project.Scripts.Model.ScriptableObjects.Scenario;
 using UnityEngine;
 
 namespace Project.Scripts.Controller.TrainingRoom
@@ -14,11 +15,15 @@ namespace Project.Scripts.Controller.TrainingRoom
 		// Debug scenario from launch training room without main menu
 		[SerializeField] private ScenarioScriptable _debugScenario;
 
+		private readonly ScenarioReceivingData _scenarioReceivingData = new ScenarioReceivingData();
 		private void Awake()
 		{
 			// Check scenario == null?
-			if (ScenarioModel.ScenarioScriptable == null)
-				ScenarioModel.ScenarioScriptable = _debugScenario;
+			if (ScenarioModel.Scenario == null)
+			{
+				ScenarioReceivingData scenarioReceivingData = new ScenarioReceivingData();
+				ScenarioModel.Scenario = scenarioReceivingData.ConvertScriptableToScripts(_debugScenario);
+			}
 		}
 
 		private void Start()

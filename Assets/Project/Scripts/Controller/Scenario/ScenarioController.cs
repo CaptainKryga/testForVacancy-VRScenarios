@@ -11,16 +11,13 @@ namespace Project.Scripts.Controller.Scenario
 		[SerializeField] private UpdateViewAbstract<string> updateListView;
 		[SerializeField] private UpdateViewAbstract<string> updateTaskView;
 
-		// Converter model to text
+		// Converter model to text, scriptables to scripts
 		private readonly ScenarioConvertModelToText _scenarioConvertModelToText = new ScenarioConvertModelToText();
 		
 		public override void Init()
 		{
-			updateListView.UpdateComponent(_scenarioConvertModelToText.GetScenarioText(ScenarioModel.ScenarioScriptable));
-			updateTaskView.UpdateComponent(_scenarioConvertModelToText.GetScenarioText(ScenarioModel.ScenarioScriptable));
+			updateListView.UpdateComponent(_scenarioConvertModelToText.GetScenarioText(ScenarioModel.Scenario));
+			updateTaskView.UpdateComponent(_scenarioConvertModelToText.GetScenarioText(ScenarioModel.Scenario));
 		}
-
-		// Get string all scenario
-
 	}
 }
