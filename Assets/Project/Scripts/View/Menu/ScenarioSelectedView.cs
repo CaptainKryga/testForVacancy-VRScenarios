@@ -1,12 +1,13 @@
-using Project.Scripts.View.Sync.Components;
+using Project.Scripts.View.Sync.Abstract;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Project.Scripts.View.Menu
 {
 	// View scenario selected controller component
 	public class ScenarioSelectedView : MonoBehaviour
 	{
-		[SerializeField] private SyncButton _buttonLoadScene;
+		[SerializeField] private SyncComponentAbstract<Button> _buttonLoadScene;
 
 		// Enable button from load scene
 		public void EnableButtonLoadScene()
