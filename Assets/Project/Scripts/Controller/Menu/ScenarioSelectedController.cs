@@ -8,14 +8,14 @@ namespace Project.Scripts.Controller.Menu
     // controller selected scenario from training room
     public class ScenarioSelectedController : MonoBehaviour
     {
-        [SerializeField] private ScenarioSelectedView scenarioSelectedView;
+        [SerializeField] private ScenarioSelectedView _scenarioSelectedView;
         
         public void OnClick_ScenarioSelected(ScenarioScriptable scenario)
         {
             ScenarioModel.ScenarioScriptable = scenario;
             
             // activate button load scene
-            scenarioSelectedView.EnableButtonLoadScene();
+            _scenarioSelectedView.EnableButtonLoadScene();
         }
     }
 }
