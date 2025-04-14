@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Project.Scripts.Controller.Scenario
 {
+	// Base scenario controller from all scene's
 	public class ScenarioController : ControllerBaseAbstract
 	{
 		// View scenario
