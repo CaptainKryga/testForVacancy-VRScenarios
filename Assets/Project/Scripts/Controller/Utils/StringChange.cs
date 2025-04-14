@@ -1,4 +1,4 @@
-namespace Project.Scripts.View.Utils
+namespace Project.Scripts.Controller.Utils
 {
 	// Setting up strings
 	public class StringChange

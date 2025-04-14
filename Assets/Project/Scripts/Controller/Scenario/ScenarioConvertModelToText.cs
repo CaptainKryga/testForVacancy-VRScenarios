@@ -1,6 +1,5 @@
-using Project.Scripts.Controller.Scenario.Utils;
+using Project.Scripts.Controller.Utils;
 using Project.Scripts.Model.ScenarioComponents;
-using Project.Scripts.View.Utils;
 
 namespace Project.Scripts.Controller.Scenario
 {
