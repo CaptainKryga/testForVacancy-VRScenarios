@@ -9,11 +9,13 @@ namespace Project.Scripts.Controller.Scenario
 	public class ScenarioController : ControllerBaseAbstract
 	{
 		// View scenario
-		[SerializeField] private ScenarioListView _scenarioListView;
+		[SerializeField] private UpdateViewAbstract<string> updateListView;
+		[SerializeField] private UpdateViewAbstract<string> updateTaskView;
 		
 		public override void Init()
 		{
-			_scenarioListView.ScenarioInit(GetScenarioList());
+			updateListView.UpdateComponent(GetScenarioList());
+			updateTaskView.UpdateComponent(GetScenarioList());
 		}
 
 		// Get string all scenario
