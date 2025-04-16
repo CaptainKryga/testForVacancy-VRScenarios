@@ -11,6 +11,8 @@ namespace Project.Scripts.View.Sync.Components
 		public override void UpdateComponentByT(CanvasGroup component)
 		{
 			ComponentSync.alpha = component.alpha;
+			ComponentSync.interactable = component.interactable;
+			ComponentSync.blocksRaycasts = component.blocksRaycasts;
 		}
 
 		public override void SyncAllComponentsByT()
