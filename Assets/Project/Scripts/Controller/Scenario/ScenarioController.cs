@@ -1,5 +1,6 @@
 using Project.Scripts.Global.Managers;
 using Project.Scripts.Model;
+using Project.Scripts.Model.ScenarioComponents;
 using Project.Scripts.Model.ScriptableObjects.Scenario;
 using Project.Scripts.View.TrainingRoom;
 using UnityEngine;
@@ -10,8 +11,9 @@ namespace Project.Scripts.Controller.Scenario
 	public class ScenarioController : ControllerBaseAbstract
 	{
 		// View scenario
-		[SerializeField] private UpdateViewAbstract<string> _scenarioListView;
-		[SerializeField] private UpdateViewAbstract<string> _scenarioTaskView;
+		[SerializeField] private UpdateViewAbstract<string> _scenarioTitleView;
+		[SerializeField] private UpdateViewAbstract<string> _scenarioScenarioView;
+		[SerializeField] private UpdateViewAbstract<string> _scenarioGroupView;
 		[SerializeField] private UpdateViewAbstract<string> _scenarioTrainingEnd;
 
 		// Converter model to text, scriptables to scripts
@@ -24,8 +26,13 @@ namespace Project.Scripts.Controller.Scenario
 		{
 			_scenarioTaskController.Init(ScenarioModel.Scenario);
 			
-			_scenarioListView.UpdateComponent(_scenarioConvertModelToText.GetScenarioText(ScenarioModel.Scenario));
-			_scenarioTaskView.UpdateComponent(_scenarioConvertModelToText.GetScenarioText(ScenarioModel.Scenario));
+			_scenarioTitleView.UpdateComponent($"{ScenarioModel.Scenario.Title}\n{ScenarioModel.Scenario.Description}");
+			
+			_scenarioScenarioView.UpdateComponent("Текущий сценарий:\n" + 
+			                                      _scenarioConvertModelToText.GetScenarioText(ScenarioModel.Scenario));
+			
+			_scenarioGroupView.UpdateComponent("Текущая группа:\n" + 
+			                                   _scenarioConvertModelToText.GetGroupText(ScenarioModel.Scenario.Groups[0], 0));
 		}
 
 		private void OnEnable()
@@ -45,8 +52,10 @@ namespace Project.Scripts.Controller.Scenario
 				_scenarioTrainingEnd.UpdateComponent("End");
 			}
 			
-			_scenarioListView.UpdateComponent(_scenarioConvertModelToText.GetScenarioText(ScenarioModel.Scenario));
-			_scenarioTaskView.UpdateComponent(_scenarioConvertModelToText.GetScenarioText(ScenarioModel.Scenario));
+			// _scenarioScenarioView.UpdateComponent(_scenarioConvertModelToText.GetScenarioText(ScenarioModel.Scenario));
+			int groupActualId = _scenarioTaskController.GetActualGroup();
+			ScenarioGroup group = ScenarioModel.Scenario.Groups[groupActualId];
+			_scenarioGroupView.UpdateComponent("Текущая группа:\n" + _scenarioConvertModelToText.GetGroupText(group, groupActualId));
 		}
 	}
 }

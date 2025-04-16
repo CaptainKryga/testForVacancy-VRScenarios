@@ -11,6 +11,7 @@ namespace Project.Scripts.Controller.Scenario
 		private List<ScenarioAction> _actionListBase = new List<ScenarioAction>();
 		private List<ScenarioAction> _actionList = new List<ScenarioAction>();
 		private List<ScenarioStep> _stepList = new List<ScenarioStep>();
+		private List<ScenarioGroup> _groupListBase = new List<ScenarioGroup>();
 		private List<ScenarioGroup> _groupList = new List<ScenarioGroup>();
 		private Model.ScenarioComponents.Scenario _scenario;
 
@@ -30,6 +31,7 @@ namespace Project.Scripts.Controller.Scenario
 			foreach (var group in _scenario.Groups)
 			{
 				_groupList.Add(group);
+				_groupListBase.Add(group);
 				
 				foreach (var step in group.Steps)
 				{
@@ -156,6 +158,17 @@ namespace Project.Scripts.Controller.Scenario
 			
 			_actionList.Add(action);
 			return false;
+		}
+
+		public int GetActualGroup()
+		{
+			for (int x = 0; x < _groupListBase.Count; x++)
+			{
+				if (_groupListBase[x].Status == ScenarioStatusEnum.Started)
+					return x;
+			}
+
+			return _groupListBase.Count - 1;
 		}
 	}
 }
