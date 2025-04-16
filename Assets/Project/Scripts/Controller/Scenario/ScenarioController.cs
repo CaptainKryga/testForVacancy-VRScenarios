@@ -40,7 +40,7 @@ namespace Project.Scripts.Controller.Scenario
 
 		private void FuncAction(object obj)
 		{
-			if (_scenarioTaskController.CheckStep2((ScenarioActionScriptable) obj))
+			if (_scenarioTaskController.Complete((ScenarioActionScriptable) obj))
 			{
 				_scenarioTrainingEnd.UpdateComponent("End");
 			}

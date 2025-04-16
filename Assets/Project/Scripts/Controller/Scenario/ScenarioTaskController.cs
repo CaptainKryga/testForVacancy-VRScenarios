@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Project.Scripts.Model.ScenarioComponents;
 using Project.Scripts.Model.ScriptableObjects.Scenario;
 using UnityEngine;
@@ -45,13 +44,12 @@ namespace Project.Scripts.Controller.Scenario
 			}
 		}
 		
-		public bool CheckStep2(ScenarioActionScriptable link)
+		// Checking task execution
+		public bool Complete(ScenarioActionScriptable link)
 		{
-			//проверка списка экшенов, если экшен есть в списке то запускает update group, если нет то выходим
-			var matches = _actionListBase.Count(p => p.Link == link);
-			if (matches == 0)
+			if (CheckTaskInGroup(link))
 				return false;
-
+			
 			_actionList = new List<ScenarioAction>();
 			_stepList = new List<ScenarioStep>();
 			_groupList = new List<ScenarioGroup>();
@@ -73,6 +71,15 @@ namespace Project.Scripts.Controller.Scenario
 			
 			
 			return _scenario.Status == ScenarioStatusEnum.Success;
+		}
+
+		// Check the list of actions, if the action is in the list then it launches update group, if not then exit
+		private bool CheckTaskInGroup(ScenarioActionScriptable link)
+		{
+			var matches = _actionListBase.Count(p => p.Link == link);
+			if (matches == 0)
+				return true;
+			return false;
 		}
 
 		// return end scenario?
