@@ -28,7 +28,7 @@ namespace Project.Scripts.Controller.Scenario
 						steps[i2].Description, 
 						new ScenarioAction[steps[i2].Actions.Length]);
 				
-					ScenarioActionScriptable[] actions = steps[i].Actions;
+					ScenarioActionScriptable[] actions = steps[i2].Actions;
 					for (int i3 = 0; i3 < actions.Length; i3++)
 					{
 						scenario.Groups[i].Steps[i2].Actions[i3] = new ScenarioAction(
