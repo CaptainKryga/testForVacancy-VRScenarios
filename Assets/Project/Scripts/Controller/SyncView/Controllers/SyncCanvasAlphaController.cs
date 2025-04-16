@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Project.Scripts.Controller.SyncView.Controllers
 {
-    public class SyncCanvasAlphaController : SyncControllerAbstract<GameObject>
+    public class SyncCanvasAlphaController : SyncControllerAbstract<CanvasGroup>
     {
         private void OnEnable()
         {
@@ -20,8 +20,8 @@ namespace Project.Scripts.Controller.SyncView.Controllers
 
         private void FuncSyncCanvasGroup(object obj)
         {
-            if (obj is SyncComponentAbstract<GameObject> go)
-                UpdateComponentsByT(go);
+            if (obj is SyncComponentAbstract<CanvasGroup> canvasGroup)
+                UpdateComponentsByT(canvasGroup);
         }
     }
 }
