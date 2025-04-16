@@ -51,11 +51,13 @@ namespace Project.Scripts.Controller.Scenario
 			{
 				_scenarioTrainingEnd.UpdateComponent("End");
 			}
-			
+
+			// await Task.Delay(100);
 			// _scenarioScenarioView.UpdateComponent(_scenarioConvertModelToText.GetScenarioText(ScenarioModel.Scenario));
 			int groupActualId = _scenarioTaskController.GetActualGroup();
 			ScenarioGroup group = ScenarioModel.Scenario.Groups[groupActualId];
-			_scenarioGroupView.UpdateComponent("Текущая группа:\n" + _scenarioConvertModelToText.GetGroupText(group, groupActualId));
+			// await Task.Delay(100);
+			_scenarioGroupView.UpdateComponent("Текущая группа:\n" + _scenarioConvertModelToText.GetGroupActualStatusText(group, groupActualId));
 		}
 	}
 }
