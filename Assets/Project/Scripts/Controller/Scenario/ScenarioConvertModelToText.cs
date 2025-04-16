@@ -19,11 +19,11 @@ namespace Project.Scripts.Controller.Scenario
 				for (int stepIndex = 0; stepIndex < groupSteps[groupIndex].Steps.Length; stepIndex++)
 				{
 					result += _stringChange.SetColorFromString($"  {stepIndex}) {groupSteps[groupIndex].Steps[stepIndex].Title}[{groupSteps[groupIndex].Steps[stepIndex].Description}]",
-					_scenarioGetColor.GetColorByStatus(groupSteps[groupIndex].Status)) + "\n";
+					_scenarioGetColor.GetColorByStatus(groupSteps[groupIndex].Steps[stepIndex].Status)) + "\n";
 					for (int actionIndex = 0; actionIndex < groupSteps[groupIndex].Steps[stepIndex].Actions.Length; actionIndex++)
 					{
 						result += _stringChange.SetColorFromString($"\t{actionIndex}) {groupSteps[groupIndex].Steps[stepIndex].Actions[actionIndex].Description}",
-						_scenarioGetColor.GetColorByStatus(groupSteps[groupIndex].Status)) + "\n";
+						_scenarioGetColor.GetColorByStatus(groupSteps[groupIndex].Steps[stepIndex].Actions[actionIndex].Status)) + "\n";
 					}
 				}
 			}

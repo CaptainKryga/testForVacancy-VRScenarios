@@ -1,4 +1,6 @@
+using Project.Scripts.Global.Managers;
 using Project.Scripts.Model;
+using Project.Scripts.Model.ScriptableObjects.Scenario;
 using Project.Scripts.View.TrainingRoom;
 using UnityEngine;
 
@@ -8,16 +10,43 @@ namespace Project.Scripts.Controller.Scenario
 	public class ScenarioController : ControllerBaseAbstract
 	{
 		// View scenario
-		[SerializeField] private UpdateViewAbstract<string> updateListView;
-		[SerializeField] private UpdateViewAbstract<string> updateTaskView;
+		[SerializeField] private UpdateViewAbstract<string> _scenarioListView;
+		[SerializeField] private UpdateViewAbstract<string> _scenarioTaskView;
+		[SerializeField] private UpdateViewAbstract<string> _scenarioTrainingEnd;
 
 		// Converter model to text, scriptables to scripts
 		private readonly ScenarioConvertModelToText _scenarioConvertModelToText = new ScenarioConvertModelToText();
 		
+		
+		[SerializeField] private ScenarioTaskController _scenarioTaskController;
+		
 		public override void Init()
 		{
-			updateListView.UpdateComponent(_scenarioConvertModelToText.GetScenarioText(ScenarioModel.Scenario));
-			updateTaskView.UpdateComponent(_scenarioConvertModelToText.GetScenarioText(ScenarioModel.Scenario));
+			_scenarioTaskController.Init(ScenarioModel.Scenario);
+			
+			_scenarioListView.UpdateComponent(_scenarioConvertModelToText.GetScenarioText(ScenarioModel.Scenario));
+			_scenarioTaskView.UpdateComponent(_scenarioConvertModelToText.GetScenarioText(ScenarioModel.Scenario));
+		}
+
+		private void OnEnable()
+		{
+			ScenarioManager.Instance.Listen(ScenarioType.Action, FuncAction);
+		}
+
+		private void OnDisable()
+		{
+			ScenarioManager.Instance.UnListen(ScenarioType.Action, FuncAction);
+		}
+
+		private void FuncAction(object obj)
+		{
+			if (_scenarioTaskController.CheckStep2((ScenarioActionScriptable) obj))
+			{
+				_scenarioTrainingEnd.UpdateComponent("End");
+			}
+			
+			_scenarioListView.UpdateComponent(_scenarioConvertModelToText.GetScenarioText(ScenarioModel.Scenario));
+			_scenarioTaskView.UpdateComponent(_scenarioConvertModelToText.GetScenarioText(ScenarioModel.Scenario));
 		}
 	}
 }
