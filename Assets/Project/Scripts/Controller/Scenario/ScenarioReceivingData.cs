@@ -1,5 +1,4 @@
 using Project.Scripts.Model.ScenarioComponents;
-using Project.Scripts.Model.ScriptableObjects;
 using Project.Scripts.Model.ScriptableObjects.Scenario;
 
 namespace Project.Scripts.Controller.Scenario
@@ -33,7 +32,7 @@ namespace Project.Scripts.Controller.Scenario
 					for (int i3 = 0; i3 < actions.Length; i3++)
 					{
 						scenario.Groups[i].Steps[i2].Actions[i3] = new ScenarioAction(
-							steps[i3].Description);
+							actions[i3].Description, actions[i3]);
 
 					}
 				}
