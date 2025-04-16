@@ -59,5 +59,10 @@ namespace Project.Scripts.Controller.Scenario
 			// await Task.Delay(100);
 			_scenarioGroupView.UpdateComponent("Текущая группа:\n" + _scenarioConvertModelToText.GetGroupActualStatusText(group, groupActualId));
 		}
+
+		public void OnAction_Action(ScenarioActionScriptable link)
+		{
+			FuncAction(link);
+		}
 	}
 }
