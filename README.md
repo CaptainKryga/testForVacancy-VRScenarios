@@ -9,8 +9,8 @@ This VR project is a training simulator with interactive step-by-step scenarios,
 ### 🔑 Key Features  
 - 🎯 **Centralized Controllers**  
   - `ScenarioController` & `ScenarioTaskController` for step logic  
-  - `SyncManager` for scene object synchronization  
-  - `ScenarioManager` for task/event validation  
+  - `SyncManager` object synchronization manager
+  - `ScenarioManager` task execution verification manager
 - 🕹️ **Dual Input Support**  
   - VR controllers (Meta Quest, etc.)  
   - Mouse & Keyboard (non-VR debug mode)  
@@ -39,8 +39,8 @@ This VR project is a training simulator with interactive step-by-step scenarios,
 ### 🔑 Основные возможности  
 - 🎯 **Централизованные контроллеры**  
   - `ScenarioController` и `ScenarioTaskController` — управление шагами  
-  - `SyncManager` — синхронизация объектов  
-  - `ScenarioManager` — проверка выполнения задач  
+  - `SyncManager` — менеджер синхронизации объектов  
+  - `ScenarioManager` — менеджер проверки выполнения задач  
 - 🕹️ **Двойной ввод**  
   - VR-контроллеры (Meta Quest и др.)  
   - Клавиатура/мышь (режим отладки)  
