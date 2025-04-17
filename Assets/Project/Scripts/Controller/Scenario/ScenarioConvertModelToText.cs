@@ -35,18 +35,19 @@ namespace Project.Scripts.Controller.Scenario
 
 		public string GetGroupActualStatusText(ScenarioGroup group, int groupIndex = -1)
 		{
-			string result = $"{ group.Title }[{ group.Description }]" +
-			                $"[{ group.Status }]\n";
+			string result = $"Название группы: { group.Title }\n" +
+			                $"Описание группы: { group.Description }\n" +
+			                $"Статус: { group.Status }\n\n";
 			
 			for (int stepIndex = 0; stepIndex < group.Steps.Length; stepIndex++)
 			{
-				string index = $"{(groupIndex == -1 ? "~" : groupIndex)}.{stepIndex}";
-				result += $"{ index }) { group.Steps[stepIndex].Title }[{ group.Steps[stepIndex].Description }]" +
-				          $"[{ group.Steps[stepIndex].Status }]\n";
+				string index = $"{stepIndex}";
+				result += $"[{ group.Steps[stepIndex].Status }]" +
+				          $"{ index }) { group.Steps[stepIndex].Title }[{ group.Steps[stepIndex].Description }]\n";
 				for (int actionIndex = 0; actionIndex < group.Steps[stepIndex].Actions.Length; actionIndex++)
 				{
-					result += $"{ index }.{ actionIndex }) { group.Steps[stepIndex].Actions[actionIndex].Description }" +
-					          $"[{ group.Steps[stepIndex].Actions[actionIndex].Status }]\n";
+					result += $"[{ group.Steps[stepIndex].Actions[actionIndex].Status }]" +
+					          $"{ index }.{ actionIndex }) { group.Steps[stepIndex].Actions[actionIndex].Description }\n";
 				}
 			}
 			return result;
@@ -54,11 +55,13 @@ namespace Project.Scripts.Controller.Scenario
 
 		public string GetStepActualStatusText(ScenarioStep step, string indexParent)
 		{
-			string result = $"Шаг: { indexParent }\n{ step.Title }[{ step.Description }]\n";
+			string result = $"Название шага: { step.Title }\n" +
+			                $"Описание шага: { step.Description }\n" +
+			                $"Статус: { step.Status }\n\n";
 			for (int actionIndex = 0; actionIndex < step.Actions.Length; actionIndex++)
 			{
-				result += $"{indexParent}.{actionIndex}) {step.Actions[actionIndex].Description}" +
-				          $"[{step.Actions[actionIndex].Status}]\n";
+				result += $"[{step.Actions[actionIndex].Status}]" +
+				          $"{actionIndex}. {step.Actions[actionIndex].Description}\n";
 			}
 
 			return result;
