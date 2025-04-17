@@ -5,8 +5,6 @@ namespace Project.Scripts.Controller.Scenario
 {
 	public class ScenarioConvertModelToText
 	{
-		private ScenarioStringUtils _scenarioStringUtils = new ScenarioStringUtils();
-		
 		public string GetScenarioText(Model.ScenarioComponents.Scenario scenario)
 		{
 			string result = $"{scenario.Title}[{scenario.Description}]\n";
