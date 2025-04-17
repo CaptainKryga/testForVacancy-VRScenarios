@@ -2309,6 +2309,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 589591868}
     - target: {fileID: 834519540800709744, guid: 58468365f29d5024088c5893afdfdb15, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClick_ScenarioSelected
+      objectReference: {fileID: 0}
+    - target: {fileID: 834519540800709744, guid: 58468365f29d5024088c5893afdfdb15, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 11400000, guid: c87033feb458b6f479607dd53dc951fb, type: 2}
@@ -2316,6 +2320,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 589591868}
+    - target: {fileID: 2434956347420022485, guid: 58468365f29d5024088c5893afdfdb15, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClick_ScenarioSelected
+      objectReference: {fileID: 0}
     - target: {fileID: 3307928750135203330, guid: 58468365f29d5024088c5893afdfdb15, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2424,10 +2432,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasMenu[UI]
       objectReference: {fileID: 0}
-    - target: {fileID: 7663321629177637686, guid: 58468365f29d5024088c5893afdfdb15, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1573201064}
     - target: {fileID: 8298616597961448153, guid: 58468365f29d5024088c5893afdfdb15, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2456,6 +2460,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 589591868}
+    - target: {fileID: 9153627378758900238, guid: 58468365f29d5024088c5893afdfdb15, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClick_ScenarioSelected
+      objectReference: {fileID: 0}
     - target: {fileID: 9153627378758900238, guid: 58468365f29d5024088c5893afdfdb15, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 

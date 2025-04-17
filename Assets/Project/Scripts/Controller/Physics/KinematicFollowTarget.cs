@@ -9,6 +9,7 @@ namespace Project.Scripts.Controller.Physics
         private Rigidbody _rigidbody;
         
         [SerializeField] private Transform _target;
+        [SerializeField] private float _speed;
 
         private void Awake()
         {
@@ -17,7 +18,7 @@ namespace Project.Scripts.Controller.Physics
 
         private void FixedUpdate()
         {
-            _rigidbody.MovePosition(_target.position);
+            _rigidbody.MovePosition(Vector3.Lerp(transform.position, _target.transform.position, _speed));
         }
     }
 }
