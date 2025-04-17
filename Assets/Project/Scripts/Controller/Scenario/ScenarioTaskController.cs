@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Project.Scripts.Model.ScenarioComponents;
 using Project.Scripts.Model.ScriptableObjects.Scenario;
+using Project.Scripts.View.TrainingRoom;
 using UnityEngine;
 
 namespace Project.Scripts.Controller.Scenario
@@ -10,10 +11,13 @@ namespace Project.Scripts.Controller.Scenario
 	{
 		private List<ScenarioAction> _actionListBase = new List<ScenarioAction>();
 		private List<ScenarioAction> _actionList = new List<ScenarioAction>();
+		private List<ScenarioStep> _stepListBase = new List<ScenarioStep>();
 		private List<ScenarioStep> _stepList = new List<ScenarioStep>();
 		private List<ScenarioGroup> _groupListBase = new List<ScenarioGroup>();
 		private List<ScenarioGroup> _groupList = new List<ScenarioGroup>();
 		private Model.ScenarioComponents.Scenario _scenario;
+
+		[SerializeField] private ScenarioSoundView _scenarioSoundView;
 
 		public void Init(Model.ScenarioComponents.Scenario scenario)
 		{
@@ -63,11 +67,37 @@ namespace Project.Scripts.Controller.Scenario
 				_actionListBase.Remove(_actionList[x]);
 				_actionList[x].Status = ScenarioStatusEnum.Skipped;
 			}
-			for (int x = 0; x < _stepList.Count; x++)
-				_stepList[x].Status = ScenarioStatusEnum.Skipped;
-			for (int x = 0; x < _groupList.Count; x++)
-				_groupList[x].Status = ScenarioStatusEnum.Skipped;
 
+			for (int x = 0; x < _stepList.Count; x++)
+			{
+				_stepListBase.Remove(_stepList[x]);
+				_stepList[x].Status = ScenarioStatusEnum.Skipped;
+			}
+
+			for (int x = 0; x < _groupList.Count; x++)
+			{
+				_groupListBase.Remove(_groupList[x]);
+				_groupList[x].Status = ScenarioStatusEnum.Skipped;
+			}
+			
+			if (_actionList.Count > 0)
+				_actionList[0].Status = ScenarioStatusEnum.Started;
+			if (_stepList.Count > 0)
+				_stepList[0].Status = ScenarioStatusEnum.Started;
+			if (_groupList.Count > 0)
+				_groupList[0].Status = ScenarioStatusEnum.Started;
+
+			if (_groupList.Count > 0 || _actionList.Count > 0 || _stepList.Count > 0)
+			{
+				_scenarioSoundView.PlaySuccess(false);
+				//sound fail
+			}
+			else
+			{
+				_scenarioSoundView.PlaySuccess(true);
+				//sound success
+			}
+			
 			_scenario.Status = _scenario.Groups[^1].Steps[^1].Actions[^1].Status is
 				ScenarioStatusEnum.NotStarted or ScenarioStatusEnum.Started ? ScenarioStatusEnum.Started : ScenarioStatusEnum.Success;
 			
@@ -89,12 +119,12 @@ namespace Project.Scripts.Controller.Scenario
 		{
 			for (int x = 0; x < _scenario.Groups.Length; x++)
 			{
-				if (_scenario.Groups[x].Status is ScenarioStatusEnum.NotStarted)
-				{
-					_scenario.Groups[x].Status = ScenarioStatusEnum.Started;
-				}
+				// if (_scenario.Groups[x].Status is ScenarioStatusEnum.NotStarted)
+				// {
+				// 	_scenario.Groups[x].Status = ScenarioStatusEnum.Started;
+				// }
 				
-				if (_scenario.Groups[x].Status is ScenarioStatusEnum.Started &&
+				if (_scenario.Groups[x].Status is ScenarioStatusEnum.Started or ScenarioStatusEnum.NotStarted &&
 				    UpdateGroup(_scenario.Groups[x], link))
 				{
 					return true;
@@ -108,12 +138,12 @@ namespace Project.Scripts.Controller.Scenario
 		{
 			for (int x = 0; x < group.Steps.Length; x++)
 			{
-				if (group.Steps[x].Status is ScenarioStatusEnum.NotStarted)
-				{
-					group.Steps[x].Status = ScenarioStatusEnum.Started;
-				}
+				// if (group.Steps[x].Status is ScenarioStatusEnum.NotStarted)
+				// {
+				// 	group.Steps[x].Status = ScenarioStatusEnum.Started;
+				// }
 				
-				if (group.Steps[x].Status is ScenarioStatusEnum.Started &&
+				if (group.Steps[x].Status is ScenarioStatusEnum.Started or ScenarioStatusEnum.NotStarted &&
 				    UpdateStep(group.Steps[x], link))
 				{
 					if (x == group.Steps.Length - 1)
@@ -143,6 +173,7 @@ namespace Project.Scripts.Controller.Scenario
 				}
 			}
 
+			_stepListBase.Add(step);
 			_stepList.Add(step);
 			return false;
 		}
@@ -169,6 +200,17 @@ namespace Project.Scripts.Controller.Scenario
 			}
 
 			return _groupListBase.Count - 1;
+		}
+
+		public int GetActualStep(ScenarioGroup group)
+		{
+			for (int x = 0; x < group.Steps.Length; x++)
+			{
+				if (group.Steps[x].Status == ScenarioStatusEnum.Started)
+					return x;
+			}
+
+			return group.Steps.Length - 1;
 		}
 	}
 }

@@ -31,8 +31,13 @@ namespace Project.Scripts.Controller.Scenario
 			_scenarioScenarioView.UpdateComponent("Текущий сценарий:\n" + 
 			                                      _scenarioConvertModelToText.GetScenarioText(ScenarioModel.Scenario));
 			
+			int groupActualId = _scenarioTaskController.GetActualGroup();
+			ScenarioGroup group = ScenarioModel.Scenario.Groups[groupActualId];
+			int stepActualId = _scenarioTaskController.GetActualStep(group);
 			_scenarioGroupView.UpdateComponent("Текущая группа:\n" + 
-			                                   _scenarioConvertModelToText.GetGroupText(ScenarioModel.Scenario.Groups[0], 0));
+			                                   _scenarioConvertModelToText.GetGroupActualStatusText(group, groupActualId));
+			// _scenarioGroupView.UpdateComponent("Текущий шаг:\n" + 
+			// 	_scenarioConvertModelToText.GetStepActualStatusText(group.Steps[stepActualId], $"{groupActualId}.{stepActualId}"));
 		}
 
 		private void OnEnable()
@@ -56,8 +61,12 @@ namespace Project.Scripts.Controller.Scenario
 			// _scenarioScenarioView.UpdateComponent(_scenarioConvertModelToText.GetScenarioText(ScenarioModel.Scenario));
 			int groupActualId = _scenarioTaskController.GetActualGroup();
 			ScenarioGroup group = ScenarioModel.Scenario.Groups[groupActualId];
+			int stepActualId = _scenarioTaskController.GetActualStep(group);
 			// await Task.Delay(100);
-			_scenarioGroupView.UpdateComponent("Текущая группа:\n" + _scenarioConvertModelToText.GetGroupActualStatusText(group, groupActualId));
+			_scenarioGroupView.UpdateComponent("Текущая группа:\n" + 
+				_scenarioConvertModelToText.GetGroupActualStatusText(group, groupActualId));
+			// _scenarioGroupView.UpdateComponent("Текущий шаг:\n" + 
+			// 	_scenarioConvertModelToText.GetStepActualStatusText(group.Steps[stepActualId], $"{groupActualId}.{stepActualId}"));
 		}
 
 		public void OnAction_Action(ScenarioActionScriptable link)

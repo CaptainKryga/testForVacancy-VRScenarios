@@ -15,7 +15,6 @@ namespace Project.Scripts.Controller.TrainingRoom
 		// Debug scenario from launch training room without main menu
 		[SerializeField] private ScenarioScriptable _debugScenario;
 
-		private readonly ScenarioReceivingData _scenarioReceivingData = new ScenarioReceivingData();
 		private void Awake()
 		{
 			// Check scenario == null?

@@ -25,30 +25,42 @@ namespace Project.Scripts.Controller.Scenario
 			{
 				string index = $"{(groupIndex == -1 ? "~" : groupIndex)}.{stepIndex}";
 				result += $"{ index }) { group.Steps[stepIndex].Title }[{ group.Steps[stepIndex].Description }]\n";
-				for (int actionIndex = 0; actionIndex < group.Steps[stepIndex].Actions.Length; actionIndex++)
-				{
-					result += $"{ index }.{ actionIndex }) { group.Steps[stepIndex].Actions[actionIndex].Description }\n";
-				}
+				// for (int actionIndex = 0; actionIndex < group.Steps[stepIndex].Actions.Length; actionIndex++)
+				// {
+				// 	result += $"{ index }.{ actionIndex }) { group.Steps[stepIndex].Actions[actionIndex].Description }\n";
+				// }
 			}
 			return result;
 		}
 
 		public string GetGroupActualStatusText(ScenarioGroup group, int groupIndex = -1)
 		{
-			string result = $"[{ group.Status }]" +
-			                $"{ group.Title }[{ group.Description }]\n";
+			string result = $"{ group.Title }[{ group.Description }]" +
+			                $"[{ group.Status }]\n";
 			
 			for (int stepIndex = 0; stepIndex < group.Steps.Length; stepIndex++)
 			{
 				string index = $"{(groupIndex == -1 ? "~" : groupIndex)}.{stepIndex}";
-				result += $"[{ group.Steps[stepIndex].Status }]" +
-				          $"{ index }) { group.Steps[stepIndex].Title }[{ group.Steps[stepIndex].Description }]\n";
+				result += $"{ index }) { group.Steps[stepIndex].Title }[{ group.Steps[stepIndex].Description }]" +
+				          $"[{ group.Steps[stepIndex].Status }]\n";
 				for (int actionIndex = 0; actionIndex < group.Steps[stepIndex].Actions.Length; actionIndex++)
 				{
-					result += $"[{ group.Steps[stepIndex].Actions[actionIndex].Status }]" +
-					          $"{ index }.{ actionIndex }) { group.Steps[stepIndex].Actions[actionIndex].Description }\n";
+					result += $"{ index }.{ actionIndex }) { group.Steps[stepIndex].Actions[actionIndex].Description }" +
+					          $"[{ group.Steps[stepIndex].Actions[actionIndex].Status }]\n";
 				}
 			}
+			return result;
+		}
+
+		public string GetStepActualStatusText(ScenarioStep step, string indexParent)
+		{
+			string result = $"Шаг: { indexParent }\n{ step.Title }[{ step.Description }]\n";
+			for (int actionIndex = 0; actionIndex < step.Actions.Length; actionIndex++)
+			{
+				result += $"{indexParent}.{actionIndex}) {step.Actions[actionIndex].Description}" +
+				          $"[{step.Actions[actionIndex].Status}]\n";
+			}
+
 			return result;
 		}
 	}
