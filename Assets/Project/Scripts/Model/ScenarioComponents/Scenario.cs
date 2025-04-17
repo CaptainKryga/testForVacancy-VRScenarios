@@ -1,5 +1,6 @@
 namespace Project.Scripts.Model.ScenarioComponents
 {
+	// Root scenario
 	public class Scenario
 	{
 		public string Title { get; private set; }

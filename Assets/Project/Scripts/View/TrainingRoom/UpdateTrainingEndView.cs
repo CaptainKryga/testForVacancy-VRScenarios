@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Project.Scripts.View.TrainingRoom
 {
+    // Enable final window
     public class UpdateTrainingEndView : UpdateViewAbstract<string>
     {
         [SerializeField] private SyncCanvasGroup _trainingEndView;

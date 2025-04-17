@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace Project.Scripts.Controller.SyncView.Controllers
 {
+    // Controller Sync from component Canvas Group
     public class SyncCanvasAlphaController : SyncControllerAbstract<CanvasGroup>
     {
         private void OnEnable()

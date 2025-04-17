@@ -12,6 +12,7 @@ namespace Project.Scripts.Controller.Scenario
 			_outlines = FindObjectsOfType<OutlineView>();
 		}
 
+		// Method update visible outline
 		public void UpdateOutlines(ScenarioActionScriptable link)
 		{
 			for (int i = 0; i < _outlines.Length; i++)

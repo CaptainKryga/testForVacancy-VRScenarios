@@ -5,6 +5,7 @@ namespace Project.Scripts.Controller.Scenario
 {
 	public class ScenarioReceivingData
 	{
+		// Method decode scenaries from model app
 		public Model.ScenarioComponents.Scenario ConvertScriptableToScripts(ScenarioScriptable scenarioScriptable)
 		{
 			Model.ScenarioComponents.Scenario scenario = new Model.ScenarioComponents.Scenario(

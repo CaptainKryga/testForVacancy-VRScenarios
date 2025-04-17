@@ -3,6 +3,7 @@ using UnityEngine;
 namespace Project.Scripts.Controller.Physics
 {
     [RequireComponent(typeof(Rigidbody))]
+    // Kinematic movement towards the target
     public class KinematicFollowTarget : MonoBehaviour
     {
         private Rigidbody _rigidbody;

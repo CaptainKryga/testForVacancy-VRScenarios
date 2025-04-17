@@ -4,6 +4,7 @@ using UnityEngine;
 namespace Project.Scripts.View.TrainingRoom
 {
     [RequireComponent(typeof(Outline))]
+    // View set visible outline
     public class OutlineView : MonoBehaviour
     {
         [SerializeField] private ScenarioActionScriptable _link;

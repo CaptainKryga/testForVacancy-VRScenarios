@@ -1,5 +1,6 @@
 namespace Project.Scripts.Model.ScenarioComponents
 {
+	// Group from scenarios
 	public class ScenarioGroup
 	{
 		public string Title { get; private set; }

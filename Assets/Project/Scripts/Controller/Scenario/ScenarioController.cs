@@ -18,21 +18,9 @@ namespace Project.Scripts.Controller.Scenario
 
 		// Converter model to text, scriptables to scripts
 		private readonly ScenarioConvertModelToText _scenarioConvertModelToText = new ScenarioConvertModelToText();
-		
-		
+		// Main task processing controller
 		[SerializeField] private ScenarioTaskController _scenarioTaskController;
 		
-		public override void Init()
-		{
-			_scenarioTaskController.Init(ScenarioModel.Scenario);
-			
-			_scenarioTitleView.UpdateComponent($"Название: {ScenarioModel.Scenario.Title}\n" +
-			                                   $"Описание: {ScenarioModel.Scenario.Description}\n" +
-			                                   $"Количество групп: {ScenarioModel.Scenario.Groups.Length}");
-			
-			UpdateUI();
-		}
-
 		private void OnEnable()
 		{
 			ScenarioManager.Instance.Listen(ScenarioType.Action, FuncAction);
@@ -42,7 +30,18 @@ namespace Project.Scripts.Controller.Scenario
 		{
 			ScenarioManager.Instance.UnListen(ScenarioType.Action, FuncAction);
 		}
+		
+		public override void Init()
+		{
+			_scenarioTaskController.Init(ScenarioModel.Scenario);
+			_scenarioTitleView.UpdateComponent($"Название: {ScenarioModel.Scenario.Title}\n" +
+			                                   $"Описание: {ScenarioModel.Scenario.Description}\n" +
+			                                   $"Количество групп: {ScenarioModel.Scenario.Groups.Length}");
+			
+			UpdateUI();
+		}
 
+		// Method that handles input of links in a scene that are task actions
 		private void FuncAction(object obj)
 		{
 			if (_scenarioTaskController.Complete((ScenarioActionScriptable) obj))
@@ -54,7 +53,8 @@ namespace Project.Scripts.Controller.Scenario
 				UpdateUI();
 			}
 		}
-
+		
+		// UI user update
 		private void UpdateUI()
 		{
 			int groupActualId = _scenarioTaskController.GetActualGroup;
@@ -67,6 +67,7 @@ namespace Project.Scripts.Controller.Scenario
 			                                   _scenarioConvertModelToText.GetStepActualStatusText(group.Steps[stepActualId], $"{groupActualId}.{stepActualId}"));
 		}
 
+		// Method that handles input of links in a scene that are task actions
 		public void OnAction_Action(ScenarioActionScriptable link)
 		{
 			FuncAction(link);

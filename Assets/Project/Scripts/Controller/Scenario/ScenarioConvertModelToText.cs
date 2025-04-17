@@ -5,6 +5,7 @@ namespace Project.Scripts.Controller.Scenario
 {
 	public class ScenarioConvertModelToText
 	{
+		// Get scenario all text
 		public string GetScenarioText(Model.ScenarioComponents.Scenario scenario)
 		{
 			string result = $"{scenario.Title}[{scenario.Description}]\n";
@@ -15,6 +16,7 @@ namespace Project.Scripts.Controller.Scenario
 			return result;
 		}
 
+		// Get one group text
 		public string GetGroupText(ScenarioGroup group, int groupIndex = -1)
 		{
 			string result = $"{ group.Title }[{ group.Description }]\n";
@@ -30,7 +32,8 @@ namespace Project.Scripts.Controller.Scenario
 			}
 			return result;
 		}
-
+		
+		// Get one group text and status
 		public string GetGroupActualStatusText(ScenarioGroup group, int groupIndex = -1)
 		{
 			string result = $"Название группы: { group.Title }\n" +
@@ -51,6 +54,7 @@ namespace Project.Scripts.Controller.Scenario
 			return result;
 		}
 
+		// Get one step text and status
 		public string GetStepActualStatusText(ScenarioStep step, string indexParent)
 		{
 			string result = $"Название шага: { step.Title }\n" +

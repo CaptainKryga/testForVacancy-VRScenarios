@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace Project.Scripts.View.TrainingRoom
 {
+	// Sound play selected sound
 	public class ScenarioSoundView : MonoBehaviour
 	{
 		[SerializeField] private AudioSource _audioSource;

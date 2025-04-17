@@ -1,6 +1,5 @@
 using Project.Scripts.Controller.Scenario;
 using Project.Scripts.Model;
-using Project.Scripts.Model.ScriptableObjects;
 using Project.Scripts.Model.ScriptableObjects.Scenario;
 using Project.Scripts.View.Menu;
 using UnityEngine;

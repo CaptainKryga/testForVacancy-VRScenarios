@@ -2,6 +2,7 @@ using Project.Scripts.Model.ScriptableObjects.Scenario;
 
 namespace Project.Scripts.Model.ScenarioComponents
 {
+	// Link actions from step and scenario manager logic
 	public class ScenarioAction
 	{
 		public string Description { get; private set; }

@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace Project.Scripts.Controller.Scenario
 {
+	// Controller task's
 	public class ScenarioTaskController : MonoBehaviour
 	{
 		private List<ScenarioAction> _actionListBase = new List<ScenarioAction>();
@@ -15,53 +16,64 @@ namespace Project.Scripts.Controller.Scenario
 		private List<ScenarioGroup> _groupList = new List<ScenarioGroup>();
 		private Model.ScenarioComponents.Scenario _scenario;
 
+		// Controller sound actions
 		[SerializeField] private ScenarioSoundView _scenarioSoundView;
+		// Controller outline visible
 		[SerializeField] private ScenarioOutlineController _scenarioOutlineController;
 
-
+		// Actual groupId
 		public int GetActualGroup => _groupId;
-		
+		private int _groupId;
+
 		public void Init(Model.ScenarioComponents.Scenario scenario)
 		{
 			_scenario = scenario;
-			MappingTasks();
+			GetAllActionFromTurn();
 			
 			scenario.Status = ScenarioStatusEnum.Started;
 			_groupList[0].Status = ScenarioStatusEnum.Started;
 			_stepList[0].Status = ScenarioStatusEnum.Started;
-			_actionList[0].Status = ScenarioStatusEnum.Started;
+			_actionListBase[0].Status = ScenarioStatusEnum.Started;
 			_scenarioOutlineController.UpdateOutlines(_actionListBase[0].Link);
 		}
 
-		private void MappingTasks()
+		// Get all task's in turn
+		private void GetAllActionFromTurn()
 		{
 			foreach (var group in _scenario.Groups)
 			{
+				_groupList.Add(group);
 				foreach (var step in group.Steps)
 				{
+					_stepList.Add(step);
 					foreach (var action in step.Actions)
 					{
 						_actionListBase.Add(action);
-					}	
+					}
 				}
 			}
 		}
 
 		// Checking task execution
-		private int _groupId;
 		public bool Complete(ScenarioActionScriptable link)
 		{
+			// Return if end training
+			if (_groupId >= _scenario.Groups.Length)
+				return false;
+			
+			// Else if task's from check?
 			if (CheckTaskInGroup(link))
 				return false;
 			
+			// List skip or fail groups
 			_actionList = new List<ScenarioAction>();
 			_stepList = new List<ScenarioStep>();
 			_groupList = new List<ScenarioGroup>();
 
-			if (_groupId >= _scenario.Groups.Length)
-				return false;
-			
+			// Find now task and correct list
 			UpdateGroup(_scenario.Groups[_groupId], link);
+			
+			// If now group complete
 			if (!(_scenario.Groups[_groupId].Status is ScenarioStatusEnum.Started or ScenarioStatusEnum.NotStarted))
 			{
 				_groupId++;
@@ -74,29 +86,25 @@ namespace Project.Scripts.Controller.Scenario
 				}
 			}
 			
+			// Update data list
 			for (int x = 0; x < _actionList.Count; x++)
 			{
 				_actionListBase.Remove(_actionList[x]);
 				_actionList[x].Status = _stepList.Count > 0 ? ScenarioStatusEnum.Skipped : ScenarioStatusEnum.Failure;
 			}
-
 			for (int x = 0; x < _stepList.Count; x++)
-			{
 				_stepList[x].Status = _stepList.Count > 0 ? ScenarioStatusEnum.Skipped : ScenarioStatusEnum.Failure;
-			}
-
 			for (int x = 0; x < _groupList.Count; x++)
-			{
 				_groupList[x].Status = ScenarioStatusEnum.Skipped;
-			}
 			
-			//sound fail
+			//Sound fail
 			if (_groupList.Count > 0 || _actionList.Count > 0 || _stepList.Count > 0)
 				_scenarioSoundView.PlaySuccess(false);
-			//sound success
+			//Sound success
 			else
 				_scenarioSoundView.PlaySuccess(true);
 			
+			// Outline visible
 			if (_actionListBase.Count > 0)
 				_scenarioOutlineController.UpdateOutlines(_actionListBase[0].Link);
 			
@@ -112,6 +120,7 @@ namespace Project.Scripts.Controller.Scenario
 			return false;
 		}
 
+		// Check and Update Actual group
 		private bool UpdateGroup(ScenarioGroup group, ScenarioActionScriptable link)
 		{
 			for (int x = 0; x < group.Steps.Length; x++)
@@ -141,6 +150,7 @@ namespace Project.Scripts.Controller.Scenario
 			return false;
 		}
 
+		// Check and Update Actual step
 		private bool UpdateStep(ScenarioStep step, ScenarioActionScriptable link)
 		{
 			for (int x = 0; x < step.Actions.Length; x++)
@@ -170,6 +180,7 @@ namespace Project.Scripts.Controller.Scenario
 			return false;
 		}
 
+		// Check and Update Actual action
 		private bool UpdateAction(ScenarioAction action, ScenarioActionScriptable link)
 		{
 			if (action.Link == link)
@@ -183,6 +194,7 @@ namespace Project.Scripts.Controller.Scenario
 			return false;
 		}
 		
+		// Get average status from Array
 		private ScenarioStatusEnum GetStatusFromArray(ScenarioStatusEnum[] statuses)
 		{
 			for (int x = 0; x < statuses.Length; x++)
@@ -196,6 +208,7 @@ namespace Project.Scripts.Controller.Scenario
 			return ScenarioStatusEnum.Success;
 		}
 
+		// Get actual id step
 		public int GetActualStep(ScenarioGroup group)
 		{
 			for (int x = 0; x < group.Steps.Length; x++)
@@ -207,6 +220,7 @@ namespace Project.Scripts.Controller.Scenario
 			return group.Steps.Length - 1;
 		}
 
+		// Get final stats from user
 		public string GetFinalStats()
 		{
 			string result = $"Сценарий: { _scenario.Title } \n" +

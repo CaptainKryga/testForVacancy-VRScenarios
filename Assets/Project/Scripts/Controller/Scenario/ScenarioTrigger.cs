@@ -9,6 +9,7 @@ namespace Project.Scripts.Controller.Scenario
     {
         [SerializeField] private ScenarioActionScriptable actionScript;
         
+        // Trigger from task manager on complete task
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player"))

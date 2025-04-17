@@ -4,10 +4,12 @@ using UnityEngine;
 
 namespace Project.Scripts.Global.Abstract
 {
+	// Manager listen/unlisten actions and Pushing
 	public class Manager<T> : Singleton<Manager<T>>
 	{
 		private readonly Dictionary<T, List<BaseEvent<T>>> _eventDictionary = new Dictionary<T, List<BaseEvent<T>>>();
 
+		// Listen actions
 		public void Listen(T gameEvent, Action<object> listenerAction, Action callerAction = null)
 		{
 			var newUIEvent = new BaseEvent<T>
@@ -24,6 +26,7 @@ namespace Project.Scripts.Global.Abstract
 			_eventDictionary[gameEvent].Add(newUIEvent);
 		}
         
+		// Un listen actions
 		public void UnListen(T gameEvent, Action<object> listenerAction, Action callerAction = null)
 		{
 			foreach (var @event in _eventDictionary[gameEvent])
@@ -35,7 +38,8 @@ namespace Project.Scripts.Global.Abstract
 				}
 			}
 		}
-
+		
+		// Push actions
 		public void Push(T gameEvent, object obj = null)
 		{
 			if (!_eventDictionary.ContainsKey(gameEvent))

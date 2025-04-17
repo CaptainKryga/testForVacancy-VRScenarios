@@ -1,5 +1,6 @@
 namespace Project.Scripts.Model.ScenarioComponents
 {
+	// Step from group
 	public class ScenarioStep
 	{
 		public string Title { get; private set; }
