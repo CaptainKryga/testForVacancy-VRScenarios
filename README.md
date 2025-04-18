@@ -4,7 +4,7 @@
 ---
 
 ## 🌍 Project Overview  
-This VR project is a training simulator with interactive step-by-step scenarios, built using **Unity** and **XR Interaction Toolkit**. The architecture follows an **event-driven** system while adhering to **SOLID principles**.  
+This VR project is a training simulator with interactive step-by-step scenarios, built using **Unity**, **XR Interaction Toolkit** and **Starter Assets from XR Interaction Toolkit**. The architecture follows an **event-driven** system while adhering to **SOLID principles**.  
 
 ### 🔑 Key Features  
 - 🎯 **Centralized Controllers**  
@@ -34,7 +34,7 @@ This VR project is a training simulator with interactive step-by-step scenarios,
 ---
 
 ## 🌍 Описание проекта  
-Этот VR-тренажёр предназначен для пошагового обучения, созданный на **Unity** с **XR Interaction Toolkit**. Архитектура использует **событийную систему** и принципы **SOLID**.  
+Этот VR-тренажёр предназначен для пошагового обучения, созданный на **Unity** c помощью **XR Interaction Toolkit** и **Starter Assets из XR Interaction Toolkit**. Архитектура использует **событийную систему** и принципы **SOLID**.  
 
 ### 🔑 Основные возможности  
 - 🎯 **Централизованные контроллеры**  
